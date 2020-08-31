@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Drop Note</string>
+
+    <string name="tab_name_main">Main</string>
+    <string name="tab_name_list">Notes</string>
+
+    <string name="note_hint">Write a note here</string>
+    <string name="btn_dropNote">Drop it!</string>
+
+    <string name="website_address">www.matthias-krt.github.io</string>
+</resources>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <!-- Row layout -->
+    <ImageView
+        android:id="@+id/imgBG"
+        android:layout_width="380dp"
+        android:layout_height="380dp"
+        android:src="@drawable/bg_note" />
+
+    <TextView
+        android:id="@+id/txtNoteCreationDatetime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxWidth="380dp"
+        android:maxHeight="20dp"
+        android:paddingTop="5dp"
+        android:paddingStart="15dp"
+        android:paddingEnd="5dp"
+        android:layout_alignParentTop="true"
+        android:singleLine="true"
+        android:gravity="start|top"
+        android:fontFamily="@font/jannscript"
+        android:textSize="14sp"
+        android:textColor="@color/colorFont"/>
+
+    <TextView
+        android:id="@+id/txtNoteContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxWidth="380dp"
+        android:maxHeight="360dp"
+        android:paddingTop="5dp"
+        android:paddingStart="15dp"
+        android:paddingEnd="5dp"
+        android:paddingBottom="15dp"
+        android:layout_below="@id/txtNoteCreationDatetime"
+        android:singleLine="false"
+        android:gravity="start|top"
+        android:fontFamily="@font/jannscript"
+        android:textSize="20sp"
+        android:textColor="@color/colorFont"/>
+
+</RelativeLayout>
