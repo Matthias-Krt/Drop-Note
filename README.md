@@ -1,7 +1,7 @@
 # Drop-Note
 
 Neue Form von Social Media Apps, schreibe Notizen und hinterlasse sie direkt vor Ort. Andere Benutzer in der Nähe können dann die Notiz lesen.
-Eine Android App, erstellt mit Java, MySQL und PHP.
+Eine Android App, erstellt mit Java. Das Server-Backend arbeitet mit PHP und MySQL.
 
 Das Projekt wurde für den Informatik Unterricht erstellt, die Ausgangssituation war:
 * Ein Projekt das in vier Monaten realisierbar ist
