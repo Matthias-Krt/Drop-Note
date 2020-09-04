@@ -14,7 +14,8 @@ import android.widget.Toast;
 
 public class tabMain extends Fragment {
 
-    String urlAddress = "http://192.168.178.210/dropnote/create_note.php";
+    //String urlAddress = "http://192.168.178.210/dropnote/create_note.php";
+    String urlAddress = "https://mk001.ahodesu.com/API/create_note.php";
 
     private EditText eTxtContent;
     private Button btnDropNote; //TODO: Add Button Animation
