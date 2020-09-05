@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Drop Note</string>
 
-    <string name="tab_name_main">Main</string>
+    <string name="tab_name_main">Write a Note</string>
     <string name="tab_name_list">Notes</string>
 
     <string name="note_hint">Write a note here</string>
