@@ -1,0 +1,69 @@
+<html>
+    <head>
+        <title></title>
+        
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,800;1,300;1,600&display=swap" rel="stylesheet">
+        
+        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    </head>
+    
+    <body>
+        <div id="hero" class="header">
+            <div class="content unselectable">
+                <div id="hero-detials">
+                    <h1>Drop Note</h1>
+                    <h2>Teile und lese Gedanken am selben Ort</h2>
+                    
+                    <!-- Icons -->
+                    
+                    <button onclick="window.location.href='#download';">
+                        <i class="fa fa-download"></i>
+                        Jetzt Herunterladen
+                    </button>
+                </div>
+                <div id="hero-image">
+                    <!-- Screenshot -->
+                </div>
+            </div>
+        </div>
+        
+        <div id="nav-placeholder"></div>
+        
+        <div class="content">
+            <div id="functions"></div>
+            
+            <div id="screens">
+                <div class="image"><img src="img/"></div>
+                <div class="description"><p>Test</p></div>
+            </div>
+            
+            <div id="ratings"></div>
+            
+            <div id="download"></div>
+        </div>
+        
+        <div id="footer-placeholder"></div>
+    </body>
+    
+    <script>
+        $(function(){
+            $("#nav-placeholder").load("common/navbar.html");
+            $("#footer-placeholder").load("common/footer.html");
+        });
+        
+        window.onscroll = function() {scrollFunction()};
+            
+            function scrollFunction() {
+                if(document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                    document.getElementById("top-navbar").style.top = "0";
+                }else{
+                    document.getElementById("top-navbar").style.top = "-50px";
+                }
+            }
+    </script>
+</html>
