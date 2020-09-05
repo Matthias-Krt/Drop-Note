@@ -17,7 +17,7 @@ import android.provider.Settings;
 import static androidx.core.content.ContextCompat.getSystemService;
 
 public class RequestLocation extends AppCompatActivity{
-
+/*
     private LocationManager locationManager;
     private LocationListener listener;
 
@@ -46,8 +46,9 @@ public class RequestLocation extends AppCompatActivity{
             public void onProviderDisabled(String s) {
 
             }
-        }
+        };
+        return void;
     }
-
+*/
 }
 

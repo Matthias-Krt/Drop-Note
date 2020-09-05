@@ -36,6 +36,6 @@ public class SplashScreen extends AppCompatActivity {
 
                 finish();
             }
-        }, 300);    //TODO: Change Splash time
+        }, 500);    //TODO: Change Splash time
     }
 }
