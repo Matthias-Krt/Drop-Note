@@ -1,0 +1,22 @@
+#functions {}
+
+#screens {}
+#screens .screen-container {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    justify-content: flex-start;
+}
+#screens .screen-container .image img {
+    width: auto;
+    height: 40vh;
+}
+#screens .screen-container .description {
+    padding: 24px;
+    font-size: 22px;
+}
+
+#ratings {}
+
+#download {}
