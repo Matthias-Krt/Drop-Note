@@ -8,7 +8,7 @@ Das Projekt wurde für den Informatik Unterricht erstellt, die Ausgangssituation
 * Es müssen feste Ziele erreicht werden und optionale Ziele angegeben
 
 ### Feste Ziele
-- [ ] Der Benutzer kann eine Notiz schreiben und "fallen" lassen
+- [x] Der Benutzer kann eine Notiz schreiben und "fallen" lassen
 - [ ] Der Benutzer erhält eine Benachrichtigung, wenn in seinem Umkreis eine Notiz gefunden wurde
 
 ### Optionale Ziele
