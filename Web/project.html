@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <title></title>
+        
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/project.css">
+        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,800;1,300;1,600&display=swap" rel="stylesheet">
+        
+        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    </head>
+    
+    <body>
+        <div id="hero" class="header">
+            <div class="content unselectable">
+                <div id="hero-details">
+                    <h1>Drop Note</h1>
+                    <h2>Entiwcklung</h2>
+                </div>
+                <div id="hero-image">
+                    <img src="img/screens/Galaxy%20A50%20Mockup_DropNote%20TabMain.png">
+                </div>
+            </div>
+        </div>
+        
+        <div id="nav-placeholder"></div>
+        
+        <div class="content">
+            <div id="functions"></div>
+            
+            <div id="screens">
+                <div class="screen-container">
+                    <div class="image"><img src="img/screens/Galaxy%20A50%20Mockup_DropNote%20TabMain.png"></div>
+                    <div class="description"><p>Schreibe Notizen und lasse diese fallen. Jeder mit der App kann deine Notiz sehen aber nur wenn er in der Nähe ist.</p></div>
+                </div>
+            </div>
+            
+            <div id="ratings"></div>
+            
+            <div id="download"></div>
+        </div>
+        
+        <div id="footer-placeholder"></div>
+    </body>
+    
+    <script>
+        $(function(){
+            $("#nav-placeholder").load("common/navbar.html");
+            $("#footer-placeholder").load("common/footer.html");
+        });
+        
+        window.onscroll = function() {scrollFunction()};
+            
+        function scrollFunction() {
+            if(document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("topnav").style.top = "0";
+                console.log("Hier");
+            }else{
+                document.getElementById("topnav").style.top = "-50px";
+                console.log("Hier 2");
+            }
+        }
+    </script>
+</html>

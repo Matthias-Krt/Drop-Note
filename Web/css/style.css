@@ -20,6 +20,7 @@ html, body {
     height: 100vh;
     width: 100vw;
     background-color: var(--main-bg-color);
+    overflow-x: hidden;
 }
 
 h1, h2, h3 {
@@ -133,8 +134,56 @@ button:hover {
     border-bottom: 5px solid var(--accent-red);
 }
 
+/* Header */
+.header {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-image: url(/img/paper_background.jpg);
+    background-size: cover;
+}
+.header h1 {
+    margin: 0;
+    font-size: 5vw;
+    color: var(--main-txt-color);
+    border: 0;
+}
+.header h2 {
+    margin-top: 0;
+    font-size: 2vw;
+    color: var(--main-txt-color);
+    border: 0;
+}
+.header .content {
+    padding: 14px;
+    
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    justify-content: flex-start;
+}
+#hero-details {
+    padding: 16px;
+    width: 50%;
+    text-align: center;
+}
+#hero-details button {
+    font-size: 24px;
+    margin-top: 24px;
+}
+#hero-image {
+    width: 30%;
+    padding: 0;
+}
+#hero-image img {
+    width: auto;
+    height: 90vh;
+}
+
 /* Content */
-.content-wrapper {
+.content {
     overflow: hidden;
     max-width: 100%;
     padding: 0 16px 0 16px;
