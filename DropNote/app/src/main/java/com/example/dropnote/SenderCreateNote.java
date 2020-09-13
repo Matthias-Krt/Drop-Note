@@ -1,11 +1,15 @@
 package com.example.dropnote;
 
+import android.app.Application;
 import android.app.ProgressDialog;
 import android.content.Context;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -17,7 +21,7 @@ import java.net.HttpURLConnection;
 
 public class SenderCreateNote extends AsyncTask<Void, Void, String> {
 
-    MainActivity mainActivity = new MainActivity();
+    GPSTracker GPS = new GPSTracker();
 
     Context context;
     String urlAddress;
@@ -26,8 +30,7 @@ public class SenderCreateNote extends AsyncTask<Void, Void, String> {
     String content;
 
     //TODO: Get latitude and longitude
-    String lat = Double.toString(mainActivity.getLatitude());
-    String lon = Double.toString(mainActivity.getLongitude());
+    String lat, lon;
 
     ProgressDialog pd;
 
@@ -39,6 +42,10 @@ public class SenderCreateNote extends AsyncTask<Void, Void, String> {
         this.eTxtContent = eTxtContent;
         //GET Text
         content = eTxtContent.getText().toString();
+
+        //GPS
+        lat = Double.toString(GPS.getLatitude());
+        lon = Double.toString(GPS.getLongitude());
     }
 
     @Override
