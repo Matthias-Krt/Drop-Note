@@ -18,7 +18,7 @@ import org.json.JSONObject;
 
 public class tabList extends Fragment {
 
-    String urlAddress = "https://mk001.ahodesu.com/API/get_note_nearby.php";
+    String urlAddress = "https://mk001.ahodesu.com/API/get_all_notes.php";
 
     private ListView listView;
     public ListAdapter listAdapter;

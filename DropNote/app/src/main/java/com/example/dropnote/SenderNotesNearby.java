@@ -2,9 +2,14 @@ package com.example.dropnote;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -24,6 +29,10 @@ public class SenderNotesNearby extends AsyncTask<Void, Void, String> {
     String urlAddress;
 
     ListView listView;
+
+    //GPS
+    private LocationManager locationManager;
+    private LocationListener locationListener;
 
     //TODO: Get Latitude and Longitude and radius
     String lat = "51.88888931274", lon = "7.99999904633";
