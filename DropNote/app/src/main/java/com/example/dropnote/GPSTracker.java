@@ -1,5 +1,6 @@
 package com.example.dropnote;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
@@ -24,22 +25,19 @@ import java.util.concurrent.TimeUnit;
 public class GPSTracker extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener{
 
     private GoogleApiClient googleApiClient;
-    Location lastLocation;
+    private Location lastLocation;
 
-    private double lon = 5, lat = 7;
+    private double lon, lat;
 
+    @SuppressLint("MissingPermission")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if(googleApiClient == null) {
-            googleApiClient = new GoogleApiClient.Builder(this)
-                    .addConnectionCallbacks(this)
-                    .addOnConnectionFailedListener(this)
-                    .addApi(LocationServices.API)
-                    .build();
+        buildGoogleApiClient();
 
-        }
+        //TODO: Add permission check
+        lastLocation = LocationServices.FusedLocationApi.getLastLocation(googleApiClient);
     }
 
     @Override
@@ -80,7 +78,18 @@ public class GPSTracker extends AppCompatActivity implements GoogleApiClient.Con
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+        Toast.makeText(getApplicationContext(),"Connection Failed",Toast.LENGTH_LONG);
+    }
 
+    public void buildGoogleApiClient() {
+        if(googleApiClient == null) {
+            googleApiClient = new GoogleApiClient.Builder(this)
+                    .addConnectionCallbacks(this)
+                    .addOnConnectionFailedListener(this)
+                    .addApi(LocationServices.API)
+                    .build();
+
+        }
     }
 
     public double getLongitude() {

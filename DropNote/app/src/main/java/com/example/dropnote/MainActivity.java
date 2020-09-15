@@ -28,8 +28,6 @@ public class MainActivity extends AppCompatActivity {
     private LocationManager locationManager;
     private LocationListener locationListener;
 
-    private double longitude, latitude;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

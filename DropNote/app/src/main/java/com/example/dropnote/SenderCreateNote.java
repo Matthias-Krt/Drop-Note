@@ -21,7 +21,7 @@ import java.net.HttpURLConnection;
 
 public class SenderCreateNote extends AsyncTask<Void, Void, String> {
 
-    GPSTracker GPS = new GPSTracker();
+    private GPSTracker GPS = new GPSTracker();
 
     Context context;
     String urlAddress;
