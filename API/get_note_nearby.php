@@ -33,8 +33,7 @@ if(isset($_GET["latitude"]) && isset($_GET["longitude"]) && isset($_GET["radius"
       }
 
       $response["success"] = 1;
-      $respond["note"] = array();
-      array_push($respond["note"],$result);
+      $respond["note"] = $result;
     }else{
       //no note found
       $response["success"] = 0;
@@ -48,7 +47,13 @@ if(isset($_GET["latitude"]) && isset($_GET["longitude"]) && isset($_GET["radius"
 }else{
   //required field missing
   $response["success"] = 0;
-  $response["message"] = "Required field(s) missing";
+  if (!isset($_GET["latitude"])) {
+    $response["message"] = "Required field(s) missing (Lat)";
+  }else if(!isset($_GET["longitude"])) {
+    $response["message"] = "Required field(s) missing (Lon)";
+  }else if (!isset($_GET["radius"])) {
+    $response["message"] = "Required field(s) missing (Rad)";
+  }
 }
 
 echo json_encode($response);
