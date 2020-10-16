@@ -6,47 +6,35 @@ $con = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_DATABASE) or die(mysql
 mysqli_set_charset($con, "utf8");
 
 //check for post data
-if(isset($_GET["latitude"]) && isset($_GET["longitude"]) && isset($_GET("[radius]"))){
+if(isset($_GET["latitude"]) && isset($_GET["longitude"]) && isset($_GET["radius"])){
   $lat = mysqli_real_escape_string($con, $_GET["latitude"]);
   $lon = mysqli_real_escape_string($con, $_GET["longitude"]);
-  $entf = mysqli_real_escape_string($con, $_GET["radius"]);
+  $radius = mysqli_real_escape_string($con, $_GET["radius"]);
 
   //Calculation
   $r_earth = 6371000; //ca. 6371km in m
 
-  $new_lat_east;
-  $new_lon_west;
-  $new_lat_north;
-  $new_lon_south;
-
   //Calculate new Coordinates
-  $new_lat_east = $lat + ($entf / $r_earth) * (180 / M_PI);
-  $new_lat_north = $lat + (((-1) * $entf) / $r_earth) * (180 / M_PI);
+  $new_lat_north = $lat + ($radius / $r_earth) * (180 / M_PI);
+  $new_lat_south = $lat - ($radius / $r_earth) * (180 / M_PI);
 
-  $new_lon_west = $lon + ($entf / $r_earth) * (180 / M_PI) / cos($new_lat_east * M_PI/180);
-  $new_lon_south = $lon + (((-1) * $entf) / $r_earth) * (180 / M_PI) / cos($new_lat_east * M_PI/180);
+  $new_lon_east = $lon + ($radius / $r_earth) * (180 / M_PI) / cos($new_lat_north * M_PI / 180);
+  $new_lon_west = $lon - ($radius / $r_earth) * (180 / M_PI) / cos($new_lat_south * M_PI / 180);
 
-  $resultset = mysqli_query($con, "SELECT * FROM notes WHERE latitude BETWEEN $new_latitude_west AND $new_latitude_east AND longitude BETWEEN $new_longitude_north AND $new_longitude_south");
+  $resultset = mysqli_query($con, "SELECT * FROM notes WHERE latitude BETWEEN $new_lat_south AND $new_lat_north AND longitude BETWEEN $new_lon_west AND $new_lon_east");
 
   //check for empty result
   if(!empty($resultset)){
     if(mysqli_num_rows($resultset) > 0){
 
-      $result = mysqli_fetch_array($resultset);
-
-      $note = array();
-      $note["note_id"] = $result["note_id"];
-      $note["content"] = $result["content"];
-      $note["latitude"] = $result["latitude"];
-      $note["longitude"] = $result["longitude"];
-      $note["creation_datetime"] = $result["creation_datetime"];
+      $result = array();
+      while ($row = mysqli_fetch_assoc($resultset)) {
+        $result[] = $row;
+      }
 
       $response["success"] = 1;
-
       $respond["note"] = array();
-      array_push($respond["note"], $note);
-      //echo json_encode($respond);
-
+      array_push($respond["note"],$result);
     }else{
       //no note found
       $response["success"] = 0;
