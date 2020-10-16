@@ -21,8 +21,6 @@ import java.net.HttpURLConnection;
 
 public class SenderCreateNote extends AsyncTask<Void, Void, String> {
 
-    private GPSTracker GPS = new GPSTracker();
-
     Context context;
     String urlAddress;
 
@@ -44,15 +42,14 @@ public class SenderCreateNote extends AsyncTask<Void, Void, String> {
         content = eTxtContent.getText().toString();
 
         //GPS
-        lat = Double.toString(GPS.getLatitude());
-        lon = Double.toString(GPS.getLongitude());
+        lat = "51";
+        lon = "7";
     }
 
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
 
-        //TODO: Loading
         pd = new ProgressDialog(context);
         pd.setTitle("Send");
         pd.setMessage("Sending...Please wait");
@@ -70,15 +67,11 @@ public class SenderCreateNote extends AsyncTask<Void, Void, String> {
 
         pd.dismiss();
 
-        //TODO
         if(response != null) {
-            Toast.makeText(context, response + lat, Toast.LENGTH_LONG).show();
-
-            //clear INPUT
-            eTxtContent.setText("");
+            Toast.makeText(context, "Congratulation! You created a new Note.", Toast.LENGTH_LONG).show();
+            eTxtContent.setText("");    //clear INPUT
         }else {
-            //TODO: Error handling
-            Toast.makeText(context, "Unsuccessful " + response, Toast.LENGTH_LONG).show();
+            Toast.makeText(context, "Oh no, something went wrong while creating a note.", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -117,10 +110,10 @@ public class SenderCreateNote extends AsyncTask<Void, Void, String> {
 
                 return response.toString();
             }else {
-                //TODO: Error handling for HTTP-Response
+                //TODO: HTTP-Error handling
             }
         }catch (IOException e) {
-            //TODO: Error handling
+            //TODO: IOException-Error handling
             e.printStackTrace();
         }
 

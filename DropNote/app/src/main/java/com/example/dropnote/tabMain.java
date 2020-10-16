@@ -17,7 +17,7 @@ public class tabMain extends Fragment {
     String urlAddress = "https://mk001.ahodesu.com/API/create_note.php";
 
     private EditText eTxtContent;
-    private Button btnDropNote; //TODO: Add Button Animation
+    private Button btnDropNote;
 
     public tabMain() {}
 
@@ -39,7 +39,6 @@ public class tabMain extends Fragment {
                     SenderCreateNote s = new SenderCreateNote(getActivity(), urlAddress, eTxtContent);
                     s.execute();
                 }else {
-                    //TODO: Error handling
                     Toast.makeText(getActivity(), "You have to write a note!", Toast.LENGTH_LONG).show();
                 }
             }

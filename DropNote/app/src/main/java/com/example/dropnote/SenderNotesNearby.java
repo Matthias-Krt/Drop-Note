@@ -30,13 +30,8 @@ public class SenderNotesNearby extends AsyncTask<Void, Void, String> {
 
     ListView listView;
 
-    //GPS
-    private LocationManager locationManager;
-    private LocationListener locationListener;
-
     //TODO: Get Latitude and Longitude and radius
-    String lat = "51.88888931274", lon = "7.99999904633";
-    float radius = 50;
+    String lat = "0", lon = "0", radius = "1000";
 
     ProgressDialog pd;
 
@@ -45,18 +40,12 @@ public class SenderNotesNearby extends AsyncTask<Void, Void, String> {
         this.urlAddress = urlAddress;
 
         this.listView = listView;
-
-        /*TODO: Get Latitude and Longitude
-        this.lat =
-        this.lon =
-         */
     }
 
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
 
-        //TODO: Loading
         pd = new ProgressDialog(context);
         pd.setTitle("Send");
         pd.setMessage("Sending...Please wait");
@@ -75,21 +64,18 @@ public class SenderNotesNearby extends AsyncTask<Void, Void, String> {
         pd.dismiss();
 
         if(response != null) {
-            //TODO
-            //Toast.makeText(context, response, Toast.LENGTH_LONG).show();
+            Toast.makeText(context, "There are notes nearby! Check them out.", Toast.LENGTH_SHORT).show();
             try {
                 convertToJSONObj(response);
             } catch (JSONException e) {
-                //TODO: Error handling
+                //TODO: JSON Error handling
                 e.printStackTrace();
             }
         }else {
-            //TODO: Error handling
-            Toast.makeText(context, "Unsuccessful " + response, Toast.LENGTH_LONG).show();
+            Toast.makeText(context, "There are no notes around you. Be the first to write one!", Toast.LENGTH_SHORT).show();
         }
     }
 
-    //TODO
     private String send() {
         HttpURLConnection conn = Connector.connect(urlAddress, "POST");
 
@@ -128,7 +114,7 @@ public class SenderNotesNearby extends AsyncTask<Void, Void, String> {
                 //TODO: HTTP-Error handling
             }
         }catch (IOException e) {
-            //TODO: Error handling
+            //TODO: IOException-Error handling
             e.printStackTrace();
         }
 
@@ -141,7 +127,6 @@ public class SenderNotesNearby extends AsyncTask<Void, Void, String> {
         String[] notes = new String[JSONArr.length()];
         String[] creationDatetime = new String[JSONArr.length()];
 
-        //TODO: check for empty
         for (int i = 0; i < JSONArr.length(); i++) {
             JSONObject JSONObj = JSONArr.getJSONObject(i);
 

@@ -18,7 +18,7 @@ import org.json.JSONObject;
 
 public class tabList extends Fragment {
 
-    String urlAddress = "https://mk001.ahodesu.com/API/get_all_notes.php";
+    String urlAddress = "https://mk001.ahodesu.com/API/get_note_nearby_POST.php";
 
     private ListView listView;
     public ListAdapter listAdapter;
@@ -33,7 +33,6 @@ public class tabList extends Fragment {
         //Initialize
         listView = (ListView) v.findViewById(R.id.lvNotes);
 
-        //TODO: Notes nearby
         SenderNotesNearby s = new SenderNotesNearby(getActivity(), urlAddress, listView);
         s.execute();
 

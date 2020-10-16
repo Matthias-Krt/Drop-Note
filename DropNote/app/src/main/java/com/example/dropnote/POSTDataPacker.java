@@ -48,7 +48,7 @@ public class POSTDataPacker {
             return packedData.toString();
 
         }catch (JSONException | UnsupportedEncodingException e) {
-            //TODO: Error handling
+            //TODO: JSON-Error handling
             e.printStackTrace();
         }
 

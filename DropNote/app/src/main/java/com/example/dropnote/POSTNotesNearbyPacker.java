@@ -1,5 +1,7 @@
 package com.example.dropnote;
 
+import android.widget.Toast;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -9,10 +11,9 @@ import java.util.Iterator;
 
 public class POSTNotesNearbyPacker {
 
-    String lat, lon;
-    float radius;
+    String lat, lon, radius;
 
-    public POSTNotesNearbyPacker(String lat, String lon, float radius) {
+    public POSTNotesNearbyPacker(String lat, String lon, String radius) {
         this.lat = lat;
         this.lon = lon;
         this.radius = radius;
@@ -47,11 +48,9 @@ public class POSTNotesNearbyPacker {
             }while (it.hasNext());
 
             return packedData.toString();
-        }catch (JSONException e) {
-            //TODO: Error handling
-            e.printStackTrace();
-        }catch (UnsupportedEncodingException e) {
-            //TODO: Error handling
+
+        }catch (JSONException | UnsupportedEncodingException e) {
+            //TODO: JSON-Error handling
             e.printStackTrace();
         }
 

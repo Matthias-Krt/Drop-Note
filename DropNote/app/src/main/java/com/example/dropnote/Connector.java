@@ -22,10 +22,10 @@ public class Connector {
 
             return conn;
         }catch (MalformedURLException e) {
-            //TODO: Error Handling
+            //TODO: MalformedURLException-Error Handling
             e.printStackTrace();
         }catch (IOException e) {
-            //TODO: Error Handling
+            //TODO: IOException-Error Handling
             e.printStackTrace();
         }
 
