@@ -1,10 +1,13 @@
 package com.example.dropnote;
 
+import android.annotation.SuppressLint;
 import android.app.Application;
 import android.app.ProgressDialog;
 import android.content.Context;
 
 import android.content.Intent;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -18,6 +21,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
+import java.util.List;
 
 public class SenderCreateNote extends AsyncTask<Void, Void, String> {
 
@@ -28,7 +32,8 @@ public class SenderCreateNote extends AsyncTask<Void, Void, String> {
     String content;
 
     //TODO: Get latitude and longitude
-    String lat, lon;
+    String lat = "0", lon = "0";
+    LocationManager locationManager;
 
     ProgressDialog pd;
 
@@ -36,14 +41,8 @@ public class SenderCreateNote extends AsyncTask<Void, Void, String> {
         this.context = context;
         this.urlAddress = urlAddress;
 
-        //INPUT
         this.eTxtContent = eTxtContent;
-        //GET Text
         content = eTxtContent.getText().toString();
-
-        //GPS
-        lat = "51";
-        lon = "7";
     }
 
     @Override
@@ -75,7 +74,27 @@ public class SenderCreateNote extends AsyncTask<Void, Void, String> {
         }
     }
 
+    private Location getLastKnownLocation() {
+        locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
+
+        List<String> providers = locationManager.getProviders(true);
+        Location bestLoc = null;
+        for (String provider : providers) {
+            @SuppressLint("MissingPermission") Location loc = locationManager.getLastKnownLocation(provider);
+            if (loc == null) {continue;}
+            if (bestLoc == null || loc.getAccuracy() < bestLoc.getAccuracy()) {
+                bestLoc = loc;
+            }
+        }
+
+        return bestLoc;
+    }
+
     private String send() {
+        Location loc = getLastKnownLocation();
+        this.lat = String.valueOf(loc.getLatitude());
+        this.lon = String.valueOf(loc.getLongitude());
+
         HttpURLConnection conn = Connector.connect(urlAddress, "POST");
 
         if(conn == null) {

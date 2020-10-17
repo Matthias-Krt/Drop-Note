@@ -1,11 +1,13 @@
 package com.example.dropnote;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -22,6 +24,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
+import java.util.List;
 
 public class SenderNotesNearby extends AsyncTask<Void, Void, String> {
 
@@ -33,9 +36,12 @@ public class SenderNotesNearby extends AsyncTask<Void, Void, String> {
     //TODO: Get Latitude and Longitude and radius
     String lat = "0", lon = "0", radius = "1000";
 
+    LocationManager locationManager;
+
     ProgressDialog pd;
 
-    public SenderNotesNearby(Context context, String urlAddress, ListView listView) {
+    @SuppressLint("MissingPermission")
+    public SenderNotesNearby(final Context context, String urlAddress, ListView listView) {
         this.context = context;
         this.urlAddress = urlAddress;
 
@@ -64,7 +70,6 @@ public class SenderNotesNearby extends AsyncTask<Void, Void, String> {
         pd.dismiss();
 
         if(response != null) {
-            Toast.makeText(context, "There are notes nearby! Check them out.", Toast.LENGTH_SHORT).show();
             try {
                 convertToJSONObj(response);
             } catch (JSONException e) {
@@ -76,7 +81,29 @@ public class SenderNotesNearby extends AsyncTask<Void, Void, String> {
         }
     }
 
+    private  Location getLastKnownLocation() {
+        locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
+
+        List<String> providers = locationManager.getProviders(true);
+        Location bestLoc = null;
+        for (String provider : providers) {
+            @SuppressLint("MissingPermission") Location loc = locationManager.getLastKnownLocation(provider);
+            if (loc == null) {continue;}
+            if (bestLoc == null || loc.getAccuracy() < bestLoc.getAccuracy()) {
+                bestLoc = loc;
+            }
+        }
+
+        return bestLoc;
+    }
+
     private String send() {
+
+        Location loc = getLastKnownLocation();
+        this.lat = String.valueOf(loc.getLatitude());
+        this.lon = String.valueOf(loc.getLongitude());
+
+
         HttpURLConnection conn = Connector.connect(urlAddress, "POST");
 
         if (conn == null) {
@@ -133,6 +160,9 @@ public class SenderNotesNearby extends AsyncTask<Void, Void, String> {
             notes[i] = JSONObj.getString("content");
             creationDatetime[i] = JSONObj.getString("creation_datetime");
         }
+
+        //TODO: Inform about notes nearby
+        // if (notes.length >= 0) {Toast.makeText(context, "There are notes nearby! Check them out.", Toast.LENGTH_SHORT).show();}
 
         ListAdapter listAdapter = new ListAdapter(context, creationDatetime, notes);
         listView.setAdapter(listAdapter);
