@@ -31,7 +31,6 @@ public class SenderCreateNote extends AsyncTask<Void, Void, String> {
     EditText eTxtContent;
     String content;
 
-    //TODO: Get latitude and longitude
     String lat = "0", lon = "0";
     LocationManager locationManager;
 

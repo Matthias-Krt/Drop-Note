@@ -33,9 +33,7 @@ public class SenderNotesNearby extends AsyncTask<Void, Void, String> {
 
     ListView listView;
 
-    //TODO: Get Latitude and Longitude and radius
     String lat = "0", lon = "0", radius = "1000";
-
     LocationManager locationManager;
 
     ProgressDialog pd;
