@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 public class tabMain extends Fragment {
 
-    String urlAddress = "create_note.php";  //TODO: Change URl
+    String urlAddress = "create_note";  //TODO: Change URl
 
     private EditText eTxtContent;
     private Button btnDropNote;

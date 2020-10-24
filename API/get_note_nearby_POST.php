@@ -59,7 +59,7 @@ if($response["success"] <= 0) {
   echo json_encode($response);
 }
 
-if($response["success"] >= 1){
+if($response["success"] >= 1) {
   echo json_encode($respond);
 }
 

@@ -9,7 +9,7 @@ Das Projekt wurde für den Informatik Unterricht erstellt, die Ausgangssituation
 
 ### Feste Ziele
 - [x] Der Benutzer kann eine Notiz schreiben und "fallen" lassen
-- [ ] Der Benutzer erhält eine Benachrichtigung, wenn in seinem Umkreis eine Notiz gefunden wurde
+- [x] Der Benutzer sieht die Notizen in seiner Nähe
 
 ### Optionale Ziele
 - [ ] Ablauf von Notizen: Notizen verschwinden nach einer bestimmten Zeit oder nachdem sie x-Mal aufgehoben wurden.

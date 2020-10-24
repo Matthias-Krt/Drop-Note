@@ -79,7 +79,7 @@ public class SenderNotesNearby extends AsyncTask<Void, Void, String> {
         }
     }
 
-    private  Location getLastKnownLocation() {
+    private Location getLastKnownLocation() {
         locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
 
         List<String> providers = locationManager.getProviders(true);

@@ -2,6 +2,7 @@ package com.example.dropnote;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.ViewPager;
 
 import android.Manifest;
@@ -24,9 +25,6 @@ public class MainActivity extends AppCompatActivity {
     private TabItem tabMain, tabList;
 
     public PageAdapter pagerAdapter;
-
-    private LocationManager locationManager;
-    private LocationListener locationListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

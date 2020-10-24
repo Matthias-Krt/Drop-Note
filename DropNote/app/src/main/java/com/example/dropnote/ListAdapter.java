@@ -42,7 +42,7 @@ public class ListAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         View vi = convertView;
 
-        if(vi == null){
+        if(vi == null) {
             vi = inflater.inflate(R.layout.row_note, null);
         }
 
