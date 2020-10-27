@@ -31,7 +31,7 @@ Projekt erstellt mit:
 ## Setup
 Lade die [APK](https://github.com/Matthias-Krt/Drop-Note/raw/master/DropNote/app/release/app-release.apk) auf einem Android Smartphone herunter. Für die App wird eine Internetverbindung und GPS benötigt.
 
-Wenn die App nicht startet überprüfe ob eine Internetverbindung besteht und GPS aktiviert ist, danach ob die App auch die benötigten Berechtigungen haben.
+Wenn die App nicht startet überprüfe ob eine Internetverbindung besteht und GPS aktiviert ist, danach ob die App auch die benötigten Berechtigungen hat.
 
 ### Quellen
 Die Idee stammt von einem [Reddit-Benutzer](https://www.reddit.com/r/AppIdeas/comments/9icetq/drop_messages/)
